@@ -2,10 +2,15 @@ import { assertOrThrow } from '../utils'
 
 export async function verify(req, res) {
     const config = res.app.get('config')
-    const { User } = req.app.get('models')
+    const { User, Karma, UserNotificationSettings } = req.app.get('models')
     const { deviceId, platform } = req.body
 
-    const user = await User.findOrCreate(deviceId, platform)
+    const { user, isNew } = await User.findOrCreate(deviceId, platform)
+
+    if (isNew) {
+        await Karma.create({ userId: user.id })
+        await UserNotificationSettings.create({ userId: user.id })
+    }
 
     res.send({
         user,

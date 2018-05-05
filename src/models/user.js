@@ -62,10 +62,10 @@ export default function(sequelize) {
     User.findOrCreate = async (deviceId, platform) => {
         const user = await User.find({ where: { deviceId }})
         if (user) {
-            return user
+            return { user, isNew: false }
         }
         const newUser = await User.create({ deviceId, platform })
-        return newUser
+        return { user: newUser, isNew: true }
     }
 
     return User
