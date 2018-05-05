@@ -3,7 +3,12 @@ import jwt from 'jsonwebtoken'
 
 export const TOKEN_TYPES = {
     ACCESS_TOKEN: 'access-token',
-    REFRESH_TOKEN: 'refresh-token',
+    REFRESH_TOKEN: 'refresh-token'
+}
+
+const PLATFORM_TYPES = {
+    ANDROID: 'android',
+    IOS: 'ios'
 }
 
 const SCHEMA = {
@@ -17,6 +22,11 @@ const SCHEMA = {
         required: true,
         allowNull: false
     },
+    platform: {
+        type: DataTypes.ENUM(Object.values(PLATFORM_TYPES)),
+        required: true,
+        allowNull: false
+    }
 }
 
 export default function(sequelize) {
