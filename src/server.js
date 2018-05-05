@@ -32,6 +32,7 @@ export default function initApp(config, depedencies) {
     app.set('config', config)
     app.set('models', depedencies.models)
     app.set('sequelize', depedencies.sequelize)
+    app.set('cloudinary', depedencies.cloudinary)
 
     app.use(morgan('dev'))
 
