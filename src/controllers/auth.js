@@ -1,37 +1,18 @@
 import { assertOrThrow } from '../utils'
 
-export async function login(req, res) {
+export async function verify(req, res) {
     const config = res.app.get('config')
     const { User } = req.app.get('models')
-    const { deviceId } = req.body
-    
-    const user = await User.find({
-        where: {
-            deviceId,
-        },
-    })
+    const { deviceId, platform } = req.body
 
-    assertOrThrow(user, Error, 'User not found')
+    const user = await User.findOrCreate(deviceId, platform)
 
-    const token = user.issueAuthToken(config.salt, config.auth)
-
-    res.send({ user, token })
-}
-
-export async function register(req, res) {
-    const config = res.app.get('config')
-    const { User } = req.app.get('models')
-    const { deviceId } = req.body
-    
-    const user = await User.create({
-        deviceId,
-    })
-
-    res.json({
+    res.send({
         user,
-        token: user.issueAuthToken(config.salt, config.auth),
+        token: user.issueAuthToken(config.salt, config.auth)
     })
 }
+
 export async function refreshToken(req, res) {
     const { salt, auth: authConfig } = req.app.get('config')
     const { User } = req.app.get('models')

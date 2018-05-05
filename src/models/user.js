@@ -59,5 +59,14 @@ export default function(sequelize) {
         }, salt, { expiresIn })
     }
 
+    User.findOrCreate = async (deviceId, platform) => {
+        const user = await User.find({ where: { deviceId }})
+        if (user) {
+            return user
+        }
+        const newUser = await User.create({ deviceId, platform })
+        return newUser
+    }
+
     return User
 }
