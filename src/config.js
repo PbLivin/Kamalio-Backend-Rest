@@ -17,5 +17,10 @@ export default function generateConfig() {
             refreshTokenLifetime: env.AUTH_REFRESH_TOKEN_LIFETIME,
             resetEmailTokenLifetime: env.AUTH_RESET_EMAIL_TOKEN_LIFETIME,
         },
+        cloud: {
+            name: env.CLOUDINARY_CLOUD_NAME,
+            apiKey: env.CLOUDINARY_API_KEY,
+            apiSecret: env.CLOUDINARY_API_SECRET,
+        },
     }
 }
