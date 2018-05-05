@@ -1,37 +1,28 @@
 import { assertOrThrow } from '../utils'
 
-export async function login(req, res) {
+export async function verify(req, res) {
     const config = res.app.get('config')
-    const { User } = req.app.get('models')
-    const { deviceId } = req.body
-    
-    const user = await User.find({
-        where: {
-            deviceId,
-        },
-    })
+    const sequelize = req.app.get('sequelize')
+    const { User, Karma, UserNotificationSettings } = req.app.get('models')
+    const { deviceId, platform } = req.body
 
-    assertOrThrow(user, Error, 'User not found')
+    const transaction = await sequelize.transaction()
 
-    const token = user.issueAuthToken(config.salt, config.auth)
+    const { user, isNew } = await User.findOrCreate({ deviceId, platform }, { transaction })
 
-    res.send({ user, token })
-}
+    if (isNew) {
+        await Karma.create({ userId: user.id }, { transaction })
+        await UserNotificationSettings.create({ userId: user.id }, { transaction })
+    }
 
-export async function register(req, res) {
-    const config = res.app.get('config')
-    const { User } = req.app.get('models')
-    const { deviceId } = req.body
-    
-    const user = await User.create({
-        deviceId,
-    })
+    await transaction.commit()
 
     res.json({
         user,
-        token: user.issueAuthToken(config.salt, config.auth),
+        token: user.issueAuthToken(config.salt, config.auth)
     })
 }
+
 export async function refreshToken(req, res) {
     const { salt, auth: authConfig } = req.app.get('config')
     const { User } = req.app.get('models')
