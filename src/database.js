@@ -1,4 +1,5 @@
 import Sequelize from 'sequelize'
+import generateConfig from './config'
 import defineUser from './models/user'
 import defineUserUpload from './models/user-upload'
 import defineUserNotificationSettings from './models/user-notification-settings'
@@ -10,7 +11,9 @@ import defineComment from './models/comment'
 import defineCommentVote from './models/comment-vote'
 import definePostVote from './models/post-vote'
 
-export default function initSequelizeFromConfig(config) {
+export default function initSequelizeFromConfig() {
+    const config = generateConfig()
+
     const sequelize = new Sequelize(config.postgres.uri, {
         dialect: 'postgres',
     })
