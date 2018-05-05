@@ -1,6 +1,6 @@
 import { assertOrThrow } from '../utils'
 
-export async function read(req, res) {
+export async function getNotificationSettings(req, res) {
     const { user } = res.locals
     const { UserNotificationSettings } = req.app.get('models')
 
@@ -13,7 +13,7 @@ export async function read(req, res) {
     res.json(userNotificationSettings)
 }
 
-export async function update(req, res) {
+export async function updateNotificationSettings(req, res) {
     const { user } = res.locals
     const { UserNotificationSettings } = req.app.get('models')
     const { allowNotifications } = req.body
@@ -28,4 +28,12 @@ export async function update(req, res) {
     await userNotificationSettings.save()
 
     res.json(userNotificationSettings)
+}
+
+export async function getStatistics(req, res) {
+    res.send('Not Implemented')
+}
+
+export async function getKarma(req, res) {
+    res.send('Not Implemented')
 }
