@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
+import cloudinary from 'cloudinary'
 import router from './routes'
 import generateConfig from './config'
 import initSequelize from './database'
@@ -11,7 +12,13 @@ process.on('unhandledRejection', console.error)
 const config = generateConfig()
 const { sequelize, models } = initSequelize(config)
 
-const depedencies = { sequelize, models }
+cloudinary.config({
+    cloud_name: config.cloud.name,
+    api_key: config.cloud.apiKey,
+    api_secret: config.cloud.apiSecret,
+})
+
+const depedencies = { sequelize, models, cloudinary }
 
 const app = initApp(config, depedencies)
 
@@ -25,6 +32,7 @@ export default function initApp(config, depedencies) {
     app.set('config', config)
     app.set('models', depedencies.models)
     app.set('sequelize', depedencies.sequelize)
+    app.set('cloudinary', depedencies.cloudinary)
 
     app.use(morgan('dev'))
 
