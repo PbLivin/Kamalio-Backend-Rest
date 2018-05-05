@@ -17,7 +17,7 @@ export async function verify(req, res) {
 
     await transaction.commit()
 
-    res.send({
+    res.json({
         user,
         token: user.issueAuthToken(config.salt, config.auth)
     })
