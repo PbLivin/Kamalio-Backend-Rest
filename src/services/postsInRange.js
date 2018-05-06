@@ -13,17 +13,17 @@ const RANGES = {
 export function getPostInRange(
     id, { latitude, longitude }
 ) {
-    return postQueryExecutor({ latitude, longitude }, { id }) 
+    return postQueryExecutor({ latitude, longitude }, { id })
 }
 
-export async function getPostsBySectionInRange(
+export function getPostsBySectionInRange(
     section, { latitude, longitude }, { offset = 0, limit = 20 }
 ) {
     return postQueryExecutor({ latitude, longitude }, { section }, { offset, limit }) 
 }
 
 export async function postQueryExecutor(
-    { latitude, longitude }, { id, section }, { offset = 0, limit = 20}
+    { latitude, longitude }, { id, section }, { offset, limit } = {}
 ) {
     const { sequelize } = getDatabase()
     const { PostLocation, Post, PostVote, Comment, User } = getDatabase().models
@@ -31,9 +31,12 @@ export async function postQueryExecutor(
     let method
     let order
 
+    const where = {}
+
     if (id) {
-        method = 'find'
+        method = 'findOne'
         order = null
+        Object.assign(where, { id })
     }
 
     if (section) {
@@ -74,6 +77,7 @@ export async function postQueryExecutor(
             'userId',
             'id'
         ],
+        where,
         include: [{
             model: PostVote,
             duplicating: false,
