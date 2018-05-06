@@ -1,5 +1,5 @@
 import { assertOrThrow } from '../utils'
-import { getPostsInRange, addDistanceInformationToPosts } from '../services/postsInRange'
+import { getPostsBySectionInRange, addDistanceInformationToPosts } from '../services/postsInRange'
 
 export async function readAll(req, res) {
     const { offset = 0, limit = 20, myVoteInclude = true } = req.query
@@ -8,7 +8,9 @@ export async function readAll(req, res) {
 
     const { Post, PostVote, PostLocation, User, Comment } = req.app.get('models')
 
-    const posts = await getPostsInRange({ longitude, latitude }, section, { offset, limit })
+    const posts = await getPostsBySectionInRange(
+        section, { longitude, latitude }, { offset, limit }
+    )
 
     const rawPosts = posts.rows.map(p => p.toJSON())
 
