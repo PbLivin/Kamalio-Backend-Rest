@@ -1,5 +1,5 @@
 import { assertOrThrow } from '../utils'
-import { getPostsBySectionInRange, addDistanceInformationToPosts } from '../services/postsInRange'
+import { getPostsBySectionInRange, getPostInRange, addDistanceInformationToPosts } from '../services/postsInRange'
 
 export async function readAll(req, res) {
     const { offset = 0, limit = 20, myVoteInclude = true } = req.query
@@ -34,7 +34,17 @@ export async function readAll(req, res) {
 }
 
 export async function readOne(req, res) {
-    res.send('NOT IMPLEMENTED')
+    // TODO: Fetch latitude, longtitude from ip api or get it from user - to discuss
+    const { latitude, longitude } = req.query
+    const { id } = req.params
+    const { user } = res.locals
+
+    const { Post, PostVote, PostLocation, User, Comment } = req.app.get('models')
+
+    const post = await getPostInRange(id, { latitude, longitude })
+    assertOrThrow(post, Error, 'Post not found')
+    
+    res.json(post)
 }
 
 export async function create(req, res) {
