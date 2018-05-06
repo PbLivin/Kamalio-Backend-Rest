@@ -26,7 +26,7 @@ export async function readAll(req, res) {
         })
     }
 
-    const postsMapped = await mapPostsByDistance({ longitude, latitude }, rawPosts)
+    const postsMapped = mapPostsByDistance({ longitude, latitude }, rawPosts)
 
     res.json(Object.assign({ rows: rawPosts }, { offset, limit, count: posts.count.length }))
 }

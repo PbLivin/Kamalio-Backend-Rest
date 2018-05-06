@@ -64,7 +64,7 @@ export async function getPostsInRange(
         }, {
             model: PostLocation,
             duplicating: false,
-            //where: buildGeoQuery({ latitude, longitude, distance: RANGES.VERY_FAR }),
+            where: buildGeoQuery({ latitude, longitude, distance: RANGES.VERY_FAR }),
         }, {
             model: User,
             duplicating: false,
@@ -79,7 +79,7 @@ export async function getPostsInRange(
     return posts
 }
 
-export async function mapPostsByDistance({ latitude, longitude }, posts) {
+export function mapPostsByDistance({ latitude, longitude }, posts) {
     const postsByDistance = {
         HERE: [],
         VERY_CLOSE: [],
