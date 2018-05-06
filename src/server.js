@@ -10,7 +10,7 @@ import initSequelize from './database'
 process.on('unhandledRejection', console.error)
 
 const config = generateConfig()
-const { sequelize, models } = initSequelize(config)
+const { sequelize, models } = initSequelize()
 
 cloudinary.config({
     cloud_name: config.cloud.name,

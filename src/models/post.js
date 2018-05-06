@@ -41,8 +41,11 @@ export const SCHEMA = {
 export default function (sequelize) {
     const Post = sequelize.define('Post', SCHEMA)
 
-    Post.associate = function ({ User }) {
+    Post.associate = function ({ User, PostLocation, PostVote, Comment }) {
         Post.belongsTo(User, { foreignKey: 'userId' })
+        Post.hasOne(PostLocation, { foreignKey: 'postId' })
+        Post.hasMany(PostVote, { foreignKey: 'postId' })
+        Post.hasMany(Comment, { foreignKey: 'postId' })
     }
 
     return Post
