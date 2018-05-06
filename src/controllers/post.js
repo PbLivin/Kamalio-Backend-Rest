@@ -39,7 +39,7 @@ export async function readOne(req, res) {
 
     const post = await getPostInRange(id, { latitude, longitude })
     assertOrThrow(post, Error, 'Post not found')
-    
+
     res.json(post)
 }
 

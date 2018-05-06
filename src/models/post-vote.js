@@ -37,7 +37,7 @@ const SCHEMA = {
 export default function (sequelize) {
     const PostVote = sequelize.define('PostVote', SCHEMA)
 
-    PostVote.associate = function ({ User, Post }) {
+    PostVote.associate = ({ User, Post }) => {
         PostVote.belongsTo(User, { foreignKey: 'userId' })
         PostVote.belongsTo(Post, { foreignKey: 'postId' })
     }

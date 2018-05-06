@@ -23,7 +23,7 @@ const SCHEMA = {
 
 export default function (sequelize) {
     const Karma = sequelize.define('Karma', SCHEMA);
-    Karma.associate = function ({ User }) {
+    Karma.associate = ({ User }) => {
         Karma.belongsTo(User, { foreignKey: 'userId' })
     }
     return Karma

@@ -29,7 +29,7 @@ export const SCHEMA = {
 export default function (sequelize) {
     const PostLocation = sequelize.define('PostLocation', SCHEMA)
 
-    PostLocation.associate = function ({ Post }) {
+    PostLocation.associate = ({ Post }) => {
         PostLocation.belongsTo(Post, { foreignKey: 'postId' })
     }
 

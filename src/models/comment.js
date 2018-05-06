@@ -50,7 +50,7 @@ const SCHEMA = {
 export default function (sequelize) {
     const Comment = sequelize.define('Comment', SCHEMA)
 
-    Comment.associate = function ({ User, Post, Comment: _Comment}) {
+    Comment.associate = ({ User, Post, Comment: _Comment }) => {
         Comment.belongsTo(User, { foreignKey: 'userId' })
         Comment.belongsTo(Post, { foreignKey: 'postId' })
         Comment.belongsTo(_Comment, { foreignKey: 'commentId' })

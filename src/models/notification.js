@@ -39,7 +39,7 @@ export const SCHEMA = {
 export default function (sequelize) {
     const Notification = sequelize.define('Notification', SCHEMA)
 
-    Notification.associate = function ({ User }) {
+    Notification.associate = ({ User }) => {
         Notification.belongsTo(User, { foreignKey: 'userId' })
     }
 

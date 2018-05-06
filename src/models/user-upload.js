@@ -28,7 +28,7 @@ const SCHEMA = {
 export default function (sequelize) {
     const UserUpload = sequelize.define('UserUpload', SCHEMA)
 
-    UserUpload.associate = function ({ User }) {
+    UserUpload.associate = ({ User }) => {
         UserUpload.belongsTo(User, { foreignKey: 'userId' })
     }
 
