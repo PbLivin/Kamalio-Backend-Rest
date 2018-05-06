@@ -28,7 +28,7 @@ export async function readAll(req, res) {
 
     const postsMapped = mapPostsByRange({ longitude, latitude }, rawPosts)
 
-    res.json(Object.assign({ rows: rawPosts }, { offset, limit, count: posts.count.length }))
+    res.json(Object.assign({ rows: postsMapped }, { offset, limit, count: posts.count.length }))
 }
 
 export async function readOne(req, res) {
