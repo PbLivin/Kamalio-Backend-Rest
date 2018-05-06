@@ -10,23 +10,44 @@ const RANGES = {
     VERY_FAR: 10000
 }
 
-export async function getPostsInRange(
-    { latitude, longitude }, section, { offset = 0, limit = 20 }
+export function getPostInRange(
+    id, { latitude, longitude }
+) {
+    return postQueryExecutor({ latitude, longitude }, { id }) 
+}
+
+export async function getPostsBySectionInRange(
+    section, { latitude, longitude }, { offset = 0, limit = 20 }
+) {
+    return postQueryExecutor({ latitude, longitude }, { section }, { offset, limit }) 
+}
+
+export async function postQueryExecutor(
+    { latitude, longitude }, { id, section }, { offset = 0, limit = 20}
 ) {
     const { sequelize } = getDatabase()
     const { PostLocation, Post, PostVote, Comment, User } = getDatabase().models
 
+    let method
     let order
 
-    if (section === 'BEST') {
-        order = sequelize.literal('rating DESC')
-    } else if (section === 'LOUDEST') {
-        order = sequelize.literal('commentCount DESC')
-    } else {
-        order = sequelize.literal('"updatedAt" DESC')
+    if (id) {
+        method = 'find'
+        order = null
     }
 
-    const posts = await Post.findAndCountAll({
+    if (section) {
+        method = 'findAndCountAll'
+        if (section === 'BEST') {
+            order = sequelize.literal('rating DESC')
+        } else if (section === 'LOUDEST') {
+            order = sequelize.literal('commentCount DESC')
+        } else {
+            order = sequelize.literal('"updatedAt" DESC')
+        }
+    }
+
+    const posts = await Post[method]({
         attributes: [
             [
                 sequelize.fn('coalesce',
