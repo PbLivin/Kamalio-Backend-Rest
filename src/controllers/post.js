@@ -1,5 +1,5 @@
 import { assertOrThrow } from '../utils'
-import { getPostsInRange, mapPostsByRange } from '../services/postsInRange'
+import { getPostsInRange, getDistanceInformationToPosts } from '../services/postsInRange'
 
 export async function readAll(req, res) {
     const { offset = 0, limit = 20, myVoteInclude = true } = req.query
@@ -26,9 +26,9 @@ export async function readAll(req, res) {
         })
     }
 
-    const postsMapped = mapPostsByRange({ longitude, latitude }, rawPosts)
+    const postsWithDistance = getDistanceInformationToPosts({ longitude, latitude }, rawPosts)
 
-    res.json(Object.assign({ rows: postsMapped }, { offset, limit, count: posts.count.length }))
+    res.json(Object.assign({ rows: postsWithDistance }, { offset, limit, count: posts.count.length }))
 }
 
 export async function readOne(req, res) {

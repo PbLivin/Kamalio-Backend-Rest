@@ -79,15 +79,7 @@ export async function getPostsInRange(
     return posts
 }
 
-export function mapPostsByRange({ latitude, longitude }, posts) {
-    const postsByDistance = {
-        HERE: [],
-        VERY_CLOSE: [],
-        CLOSE: [],
-        FAR: [],
-        VERY_FAR: []
-    }
-
+export function getDistanceInformationToPosts({ latitude, longitude }, posts) {
     for (let i = 0; i < posts.length; ++i) {
         const { PostLocation: postLocation } = posts[i]
         const pLat = postLocation.latitude
@@ -102,13 +94,13 @@ export function mapPostsByRange({ latitude, longitude }, posts) {
         for (let j = 0; j < distanceLabels.length; ++j) {
             const distanceLabel = distanceLabels[j]
             if (distance < RANGES[distanceLabel]) {
-                postsByDistance[distanceLabel].push(postLocation)
+                postLocation.distance = distanceLabel
                 break;
             }
         }
     }
 
-    return postsByDistance
+    return posts
 }
 
 export function buildGeoQuery({ latitude, longitude, distance }) {
