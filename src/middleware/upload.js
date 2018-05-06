@@ -15,7 +15,7 @@ export default function defineUploadMiddleware(req, res, next) {
                 return next(err);
             }
 
-            Object.values(rawFiles).forEach(file => {
+            Object.values(rawFiles).forEach((file) => {
                 filePaths.push(file[0].path)
             })
 

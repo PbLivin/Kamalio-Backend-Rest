@@ -17,7 +17,7 @@ export default function authenticate(req, res, next) {
         if (authorization.includes('Bearer ')) {
             const token = authorization.replace('Bearer ', '')
             try {
-                let payload = jwt.verify(token, config.salt)
+                const payload = jwt.verify(token, config.salt)
                 user = await User.findById(payload.id)
             } catch (err) {
                 throw new Error('Invalid Bearer Token')

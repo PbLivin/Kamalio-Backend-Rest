@@ -29,7 +29,7 @@ const SCHEMA = {
     }
 }
 
-export default function(sequelize) {
+export default function (sequelize) {
     const User = sequelize.define('User', SCHEMA);
 
     User.TOKEN_TYPES = TOKEN_TYPES

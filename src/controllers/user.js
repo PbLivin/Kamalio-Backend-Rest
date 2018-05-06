@@ -1,5 +1,3 @@
-import { assertOrThrow } from '../utils'
-
 export async function getNotificationSettings(req, res) {
     const { user } = res.locals
     const { UserNotificationSettings } = req.app.get('models')

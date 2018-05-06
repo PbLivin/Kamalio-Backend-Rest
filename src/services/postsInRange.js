@@ -130,7 +130,7 @@ export function addDistanceInformationToPosts({ latitude, longitude }, posts) {
 
 export function buildGeoQuery({ latitude, longitude, distance }) {
     const { minLat, maxLat, minLon, maxLon } = getBoundaries(latitude, longitude, distance)
-    const Op = Sequelize.Op
+    const { Op } = Sequelize
 
     return Object.assign({}, {
         latitude: {
@@ -154,7 +154,7 @@ export function getBoundaries(lat, lon, dist) {
     let minLon = Number.MAX_VALUE
     let maxLon = -Number.MAX_VALUE
 
-    bears.forEach(bearing => {
+    bears.forEach((bearing) => {
         const { latitude, longitude } = geolib.computeDestinationPoint(initialPoint, dist, bearing)
         minLat = Math.min(minLat, latitude)
         maxLat = Math.max(maxLat, latitude)

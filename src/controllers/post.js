@@ -6,8 +6,6 @@ export async function readAll(req, res) {
     const { latitude, longitude, section } = req.query
     const { user } = res.locals
 
-    const { Post, PostVote, PostLocation, User, Comment } = req.app.get('models')
-
     const posts = await getPostsBySectionInRange(
         section, { longitude, latitude }, { offset, limit }
     )
@@ -15,6 +13,7 @@ export async function readAll(req, res) {
     const rawPosts = posts.rows.map(p => p.toJSON())
 
     if (myVoteInclude) {
+        const { PostVote } = req.app.get('models')
         const myVotes = await PostVote.findAll({
             where: {
                 postId: rawPosts.map(p => p.id),
@@ -22,7 +21,7 @@ export async function readAll(req, res) {
             }
         })
 
-        rawPosts.map(rawPost => {
+        rawPosts.map((rawPost) => {
             const myVote = myVotes.filter(vote => vote.postId === rawPost.id)[0]
             rawPost.myVote = (myVote && myVote.value) ? myVote.value : 0
         })
@@ -37,9 +36,6 @@ export async function readOne(req, res) {
     // TODO: Fetch latitude, longtitude from ip api or get it from user - to discuss
     const { latitude, longitude } = req.query
     const { id } = req.params
-    const { user } = res.locals
-
-    const { Post, PostVote, PostLocation, User, Comment } = req.app.get('models')
 
     const post = await getPostInRange(id, { latitude, longitude })
     assertOrThrow(post, Error, 'Post not found')

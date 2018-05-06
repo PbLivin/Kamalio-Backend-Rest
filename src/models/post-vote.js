@@ -1,8 +1,8 @@
 import { DataTypes } from 'sequelize'
 
 const VALUES = {
-    'UPVOTE': 1,
-    'DOWNVOTE': -1
+    UPVOTE: 1,
+    DOWNVOTE: -1
 }
 
 const SCHEMA = {

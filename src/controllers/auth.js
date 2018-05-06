@@ -1,3 +1,4 @@
+import jwt from 'jsonwebtoken'
 import { assertOrThrow } from '../utils'
 
 export async function verify(req, res) {
