@@ -79,7 +79,7 @@ export async function getPostsInRange(
     return posts
 }
 
-export function getDistanceInformationToPosts({ latitude, longitude }, posts) {
+export function addDistanceInformationToPosts({ latitude, longitude }, posts) {
     for (let i = 0; i < posts.length; ++i) {
         const { PostLocation: postLocation } = posts[i]
         const pLat = postLocation.latitude
