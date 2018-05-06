@@ -36,7 +36,7 @@ export default function (sequelize) {
 
     User.getAuthToken = (deviceId, salt) => jwt.sign({ deviceId }, salt)
 
-    User.prototype.issueAuthToken = function (salt, authConfig) {
+    User.prototype.issueAuthToken = function issueAuthToken(salt, authConfig) {
         return {
             accessToken: this.issueToken(
                 TOKEN_TYPES.ACCESS_TOKEN,
@@ -52,10 +52,10 @@ export default function (sequelize) {
         }
     }
 
-    User.prototype.issueToken = function (type, salt, expiresIn) {
+    User.prototype.issueToken = function issueToken(type, salt, expiresIn) {
         return jwt.sign({
             id: this.id,
-            type: type,
+            type,
         }, salt, { expiresIn })
     }
 
