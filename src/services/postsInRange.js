@@ -79,7 +79,7 @@ export async function getPostsInRange(
     return posts
 }
 
-export function mapPostsByDistance({ latitude, longitude }, posts) {
+export function mapPostsByRange({ latitude, longitude }, posts) {
     const postsByDistance = {
         HERE: [],
         VERY_CLOSE: [],
