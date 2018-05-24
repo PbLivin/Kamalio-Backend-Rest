@@ -14,8 +14,6 @@ import definePostVote from './models/post-vote'
 export default function initSequelizeFromConfig() {
     const config = generateConfig();
 
-    console.log(config.postgres.uri);
-
     let sequelize = new Sequelize(config.postgres.uri, {
         dialect: 'postgres',
         protocol: 'postgres',
@@ -44,5 +42,5 @@ export default function initSequelizeFromConfig() {
         }
     });
 
-    return { sequelize: global.sequelize, models };
+    return { sequelize, models };
 }
