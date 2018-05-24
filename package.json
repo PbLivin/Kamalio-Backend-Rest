@@ -19,6 +19,7 @@
     ]
   },
   "dependencies": {
+    "babel-core": "^6.26.3",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "body-parser": "^1.18.2",
     "cloudinary": "^1.11.0",
