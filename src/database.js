@@ -11,10 +11,10 @@ import defineComment from './models/comment'
 import defineCommentVote from './models/comment-vote'
 import definePostVote from './models/post-vote'
 
-export default function initSequelizeFromConfig() {
+export default function initSequelizeFromConfig(ingress) {
     const config = generateConfig()
 
-    const sequelize = new Sequelize(config.postgres.uri, {
+    const sequelize = new Sequelize(ingress ? config.postgres.ingress_uri : config.postgres.uri, {
         dialect: 'postgres',
     })
 

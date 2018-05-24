@@ -9,6 +9,7 @@ export default function generateConfig() {
         salt: env.SALT,
         postgres: {
             uri: env.DATABASE_URL,
+            ingress_uri: env.DATABASE_INGRESS_URL || env.DATABASE_URL
             maxIdleTime: +(env.DATABASE_MAX_IDLE_TIME || 0),
             maxPoolSize: +env.DATABASE_MAX_POOL_SIZE || 100,
         },
