@@ -11,7 +11,7 @@
     "drop-db": "node ./dist/tools/drop-database.js",
     "sync-db": "node ./dist/tools/sync-database.js",
     "seed-db": "node ./dist/tools/seed-database.js",
-    "postinstall": "node ./dist/tools/sync-database.js & babel src -d dist"
+    "postinstall": "babel src -d dist & node ./dist/tools/sync-database.js"
   },
   "babel": {
     "plugins": [
