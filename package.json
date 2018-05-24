@@ -10,7 +10,8 @@
     "watch-d": "babel -w src -d dist & nodemon --harmony dist/server",
     "drop-db": "node ./dist/tools/drop-database.js",
     "sync-db": "node ./dist/tools/sync-database.js",
-    "seed-db": "node ./dist/tools/seed-database.js"
+    "seed-db": "node ./dist/tools/seed-database.js",
+    "postinstall": "node ./dist/tools/sync-database.js & babel src -d dist"
   },
   "babel": {
     "plugins": [
