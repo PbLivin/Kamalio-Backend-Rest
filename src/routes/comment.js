@@ -10,4 +10,6 @@ router.get('/:id', errorWrap(commentController.one))
 router.put('/:id', errorWrap(commentController.update))
 router.delete('/:id', errorWrap(commentController.remove))
 
+router.post('/:id/votes', errorWrap(commentController.vote))
+
 export default router

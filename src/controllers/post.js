@@ -52,7 +52,7 @@ export async function readOne(req, res) {
 
     rawPost.myVote = (myVote && myVote.value) ? myVote.value : 0
 
-    res.json(post)
+    res.json(rawPost)
 }
 
 export async function create(req, res) {
@@ -133,4 +133,28 @@ export async function putPostPhoto(req, res) {
     post.photoUrl = photoUrl
     await post.save()
     res.json(post)
+}
+
+export async function vote(req, res) {
+    const { Post, PostVote } = req.app.get('models')
+    const { id } = req.params
+    const { user } = res.locals
+
+    const { value } = req.body
+
+    const post = await Post.findOne({ where: { id } })
+    assertOrThrow(post, Error, 'Post not found')
+
+    const oldPostVote = await PostVote.findOne({ where: { userId: user.id, postId: post.id } })
+    if (oldPostVote) {
+        await oldPostVote.destroy()
+    }
+
+    const postVote = await PostVote.create({
+        value,
+        userId: user.id,
+        postId: post.id
+    })
+
+    res.json(postVote)
 }

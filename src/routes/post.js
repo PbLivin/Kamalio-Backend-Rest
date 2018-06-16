@@ -12,4 +12,6 @@ router.put('/:id', errorWrap(postController.update))
 router.put('/:id/photo', upload, errorWrap(postController.putPostPhoto))
 router.delete('/:id', errorWrap(postController.remove))
 
+router.post('/:id/vote', errorWrap(postController.vote))
+
 export default router

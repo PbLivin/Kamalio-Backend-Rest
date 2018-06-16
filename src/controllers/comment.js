@@ -75,3 +75,27 @@ export async function remove(req, res) {
 
     res.json({ status: 'ok' })
 }
+
+export async function vote(req, res) {
+    const { Comment, CommentVote } = req.app.get('models')
+    const { id } = req.params
+    const { user } = res.locals
+
+    const { value } = req.body
+
+    const comment = await Comment.findOne({ where: { id } })
+    assertOrThrow(comment, Error, 'Comment not found')
+
+    const oldCommentVote = await CommentVote.findOne({ where: { userId: user.id, commentId: comment.id } })
+    if (oldCommentVote) {
+        await oldCommentVote.destroy()
+    }
+
+    const commentVote = await CommentVote.create({
+        value,
+        userId: user.id,
+        commentId: comment.id
+    })
+
+    res.json(commentVote)
+}
