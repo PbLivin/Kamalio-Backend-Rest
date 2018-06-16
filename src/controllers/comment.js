@@ -71,5 +71,7 @@ export async function remove(req, res) {
 
     assertOrThrow(comment.userId === user.id, Error, 'Insufficient rights')
 
+    await comment.destroy()
+
     res.json({ status: 'ok' })
 }

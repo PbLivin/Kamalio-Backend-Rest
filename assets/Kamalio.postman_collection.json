@@ -190,6 +190,151 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "comment",
+			"description": "",
+			"item": [
+				{
+					"name": "/comments/:id",
+					"request": {
+						"url": "localhost:3000/comments/813f1bfb-ff6b-4844-a966-f6ffb7058e88",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNTcxMjgsImV4cCI6MTUyOTI0MzUyOH0.kozUqDNTjd_5blNlkslDycRuuAIQ8gmpmELciUxtV5E",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/comments",
+					"request": {
+						"url": "localhost:3000/comments",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNTcxMjgsImV4cCI6MTUyOTI0MzUyOH0.kozUqDNTjd_5blNlkslDycRuuAIQ8gmpmELciUxtV5E",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"postId\": \"97913d7f-760a-465d-ab3e-fd395ab71f23\",\n\t\"content\": \"Nice post lol\"\n}\n"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/comments/:id",
+					"request": {
+						"url": "localhost:3000/comments/855c2908-d50f-49ab-a28c-0536f18757c9",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNTcxMjgsImV4cCI6MTUyOTI0MzUyOH0.kozUqDNTjd_5blNlkslDycRuuAIQ8gmpmELciUxtV5E",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/comments/:id",
+					"request": {
+						"url": "localhost:3000/comments/855c2908-d50f-49ab-a28c-0536f18757c9",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNTcxMjgsImV4cCI6MTUyOTI0MzUyOH0.kozUqDNTjd_5blNlkslDycRuuAIQ8gmpmELciUxtV5E",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"content\": \"WOW\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/comments?postId=:id&offset=0&limit=20",
+					"request": {
+						"url": {
+							"raw": "localhost:3000/comments?postId=97913d7f-760a-465d-ab3e-fd395ab71f23&offset=0&limit=20",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"comments"
+							],
+							"query": [
+								{
+									"key": "postId",
+									"value": "97913d7f-760a-465d-ab3e-fd395ab71f23",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "limit",
+									"value": "20",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNTcxMjgsImV4cCI6MTUyOTI0MzUyOH0.kozUqDNTjd_5blNlkslDycRuuAIQ8gmpmELciUxtV5E",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
