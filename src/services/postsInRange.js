@@ -10,10 +10,8 @@ const RANGES = {
     VERY_FAR: 10000
 }
 
-export function getPostInRange(
-    id, { latitude, longitude }
-) {
-    return postQueryExecutor({ latitude, longitude }, { id })
+export function getPost(id) {
+    return postQueryExecutor({ latitude: null, longitude: null }, { id })
 }
 
 export function getPostsBySectionInRange(
@@ -50,6 +48,11 @@ export async function postQueryExecutor(
         }
     }
 
+    let postLocationWhere = {}
+    if (latitude && longitude) {
+        postLocationWhere = buildGeoQuery({ latitude, longitude, distance: RANGES.VERY_FAR })
+    }
+
     const posts = await Post[method]({
         attributes: [
             [
@@ -72,6 +75,7 @@ export async function postQueryExecutor(
             ],
             'title',
             'content',
+            'photoUrl',
             'createdAt',
             'updatedAt',
             'userId',
@@ -89,7 +93,7 @@ export async function postQueryExecutor(
         }, {
             model: PostLocation,
             duplicating: false,
-            where: buildGeoQuery({ latitude, longitude, distance: RANGES.VERY_FAR }),
+            where: postLocationWhere
         }, {
             model: User,
             duplicating: false,
