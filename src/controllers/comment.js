@@ -33,7 +33,20 @@ export async function one(req, res) {
 }
 
 export async function update(req, res) {
-    res.send('NOT IMPLEMENTED')
+    const { id } = req.params
+    const { content } = req.body
+    const { Comment } = req.app.get('models')
+    const { user } = res.locals
+
+    const comment = await Comment.findOne({ where: { id } })
+    assertOrThrow(comment, Error, 'Post not found')
+
+    assertOrThrow(comment.userId === user.id, Error, 'Insufficient rights')
+
+    await comment.update({
+        content
+    })
+    res.send(comment)
 }
 
 export async function remove(req, res) {
