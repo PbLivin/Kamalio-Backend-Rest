@@ -58,15 +58,14 @@ export async function readOne(req, res) {
 }
 
 export async function create(req, res) {
-    const { title, content, photoUrl, latitude, longitude } = req.body
+    const { title, content, latitude, longitude } = req.body
     const { user } = res.locals
     const { Post, PostLocation } = req.app.get('models')
 
     const post = await Post.create({
         title,
         content,
-        userId: user.id,
-        photoUrl
+        userId: user.id
     })
 
     const postLocation = await PostLocation.create({
@@ -76,6 +75,39 @@ export async function create(req, res) {
     })
 
     res.json({ post, postLocation })
+}
+
+export async function update(req, res) {
+    const { Post } = req.app.get('models')
+    const { id } = req.params
+    const { title, content } = req.body
+    const { user } = res.locals
+
+    const post = await Post.findOne({ where: { id } })
+    assertOrThrow(post, Error, 'Post not found')
+
+    assertOrThrow(post.userId === user.id, Error, 'Insufficient rights')
+
+    await post.update({
+        title,
+        content
+    })
+
+    res.json(post)
+}
+
+export async function remove(req, res) {
+    const { Post } = req.app.get('models')
+    const { id } = req.params
+    const { user } = res.locals
+
+    const post = await Post.findOne({ where: { id } })
+    assertOrThrow(post, Error, 'Post not found')
+
+    assertOrThrow(post.userId === user.id, Error, 'Insufficient rights')
+
+    await post.destroy()
+    res.json({ status: 'ok' })
 }
 
 export async function putPostPhoto(req, res) {
@@ -102,28 +134,5 @@ export async function putPostPhoto(req, res) {
 
     post.photoUrl = photoUrl
     await post.save()
-
     res.json(post)
-}
-
-export async function update(req, res) {
-    res.send('NOT IMPLEMENTED')
-}
-
-export async function remove(req, res) {
-    const { Post } = req.app.get('models')
-    const { id } = req.params
-    const { user } = res.locals
-
-    const post = await Post.findOne({ where: { id } })
-
-    console.log(post.userId);
-    console.log(user.id)
-
-    assertOrThrow(post, Error, 'Post not found')
-    assertOrThrow(post.userId === user.id, Error, 'Insufficient rights')
-
-    await post.destroy()
-
-    res.json({ status: 'ok' })
 }
