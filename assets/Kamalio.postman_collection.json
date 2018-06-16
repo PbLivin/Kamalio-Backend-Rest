@@ -2,7 +2,7 @@
 	"variables": [],
 	"info": {
 		"name": "Kamalio",
-		"_postman_id": "1747dabd-ab3e-5fd2-8ee8-14213d399a26",
+		"_postman_id": "bc39071f-8c2e-e0fc-8f58-107adceefed5",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
@@ -84,7 +84,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -159,7 +162,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -257,7 +263,10 @@
 								"description": ""
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"description": ""
 					},
 					"response": []
@@ -326,6 +335,32 @@
 							{
 								"key": "Authorization",
 								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNTcxMjgsImV4cCI6MTUyOTI0MzUyOH0.kozUqDNTjd_5blNlkslDycRuuAIQ8gmpmELciUxtV5E",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"description": "",
+			"item": [
+				{
+					"name": "/users/karma",
+					"request": {
+						"url": "localhost:3000/users/karma",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNjIzNTUsImV4cCI6MTUyOTI0ODc1NX0.xwA8_p4kuTX2qTUxReqAqIBnfxgLOcOQ4sYTbh-UBMk",
 								"description": ""
 							}
 						],
