@@ -1,0 +1,195 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Kamalio",
+		"_postman_id": "1747dabd-ab3e-5fd2-8ee8-14213d399a26",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"description": "",
+			"item": [
+				{
+					"name": "/auth/verify",
+					"request": {
+						"url": "localhost:3000/auth/verify",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "",
+								"value": "",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"deviceId\": \"1\",\n\t\"platform\": \"android\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "post",
+			"description": "",
+			"item": [
+				{
+					"name": "/posts?latitude=51&longitude=20.02&section=BEST",
+					"request": {
+						"url": {
+							"raw": "localhost:3000/posts?latitude=51&longitude=20.02&section=BEST",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"posts"
+							],
+							"query": [
+								{
+									"key": "latitude",
+									"value": "51",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "longitude",
+									"value": "20.02",
+									"equals": true,
+									"description": ""
+								},
+								{
+									"key": "section",
+									"value": "BEST",
+									"equals": true,
+									"description": ""
+								}
+							],
+							"variable": []
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNDkzNjMsImV4cCI6MTUyOTIzNTc2M30.J8BpaJlqkLpfNeXhGV_wqdE3M2ej4RBV0t3FrTe1H6k",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/posts",
+					"request": {
+						"url": "localhost:3000/posts",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNDkzNjMsImV4cCI6MTUyOTIzNTc2M30.J8BpaJlqkLpfNeXhGV_wqdE3M2ej4RBV0t3FrTe1H6k",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"A\",\n\t\"content\": \"Hello world\",\n\t\"latitude\": \"51\",\n\t\"longitude\": \"20\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/posts/:id/photo",
+					"request": {
+						"url": "localhost:3000/posts/97913d7f-760a-465d-ab3e-fd395ab71f23/photo",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNDkzNjMsImV4cCI6MTUyOTIzNTc2M30.J8BpaJlqkLpfNeXhGV_wqdE3M2ej4RBV0t3FrTe1H6k",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "bjh.jpg",
+									"value": "",
+									"description": "",
+									"type": "file"
+								}
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/posts/:id",
+					"request": {
+						"url": "localhost:3000/posts/97913d7f-760a-465d-ab3e-fd395ab71f23",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNDkzNjMsImV4cCI6MTUyOTIzNTc2M30.J8BpaJlqkLpfNeXhGV_wqdE3M2ej4RBV0t3FrTe1H6k",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/posts/:id",
+					"request": {
+						"url": "localhost:3000/posts/2e68d49c-25ff-4e4e-a57b-38be9917d095",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNDkzNjMsImV4cCI6MTUyOTIzNTc2M30.J8BpaJlqkLpfNeXhGV_wqdE3M2ej4RBV0t3FrTe1H6k",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
