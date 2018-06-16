@@ -34,11 +34,25 @@ export async function readAll(req, res) {
 
 export async function readOne(req, res) {
     // TODO: Fetch latitude, longtitude from ip api or get it from user - to discuss
+    const { user } = res.locals
     const { latitude, longitude } = req.query
     const { id } = req.params
+    const { PostVote } = req.app.get('models')
 
     const post = await getPostInRange(id, { latitude, longitude })
+
     assertOrThrow(post, Error, 'Post not found')
+
+    const rawPost = post.toJSON()
+
+    const myVote = await PostVote.findOne({
+        where: {
+            postId: rawPost.id,
+            userId: user.id
+        }
+    })
+
+    rawPost.myVote = (myVote && myVote.value) ? myVote.value : 0
 
     res.json(post)
 }
