@@ -39,7 +39,7 @@ export async function update(req, res) {
     const { user } = res.locals
 
     const comment = await Comment.findOne({ where: { id } })
-    assertOrThrow(comment, Error, 'Post not found')
+    assertOrThrow(comment, Error, 'Comment not found')
 
     assertOrThrow(comment.userId === user.id, Error, 'Insufficient rights')
 
@@ -50,5 +50,14 @@ export async function update(req, res) {
 }
 
 export async function remove(req, res) {
-    res.send('NOT IMPLEMENTED')
+    const { id } = req.params
+    const { user } = res.locals
+    const { Comment } = req.app.get('models')
+
+    const comment = await Comment.findOne({ where: { id } })
+    assertOrThrow(comment, Error, 'Comment not found')
+
+    assertOrThrow(comment.userId === user.id, Error, 'Insufficient rights')
+
+    res.json({ status: 'ok' })
 }
