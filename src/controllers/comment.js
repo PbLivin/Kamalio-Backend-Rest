@@ -23,7 +23,13 @@ export async function list(req, res) {
 }
 
 export async function one(req, res) {
-    res.send('NOT IMPLEMENTED')
+    const { id } = req.params
+    const { Comment } = req.app.get('models')
+
+    const comment = await Comment.findOne({ where: { id } })
+    assertOrThrow(comment, Error, 'Comment not found')
+
+    res.send(comment)
 }
 
 export async function update(req, res) {
