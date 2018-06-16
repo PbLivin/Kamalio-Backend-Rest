@@ -136,6 +136,7 @@ export async function putPostPhoto(req, res) {
 }
 
 export async function vote(req, res) {
+    // TODO(davlis): Move to external service
     const { Post, PostVote } = req.app.get('models')
     const { id } = req.params
     const { user } = res.locals

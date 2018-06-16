@@ -19,6 +19,7 @@ export async function create(req, res) {
 }
 
 export async function list(req, res) {
+    // TODO(davlis): Add comments vote count
     const { postId } = req.query
     const { offset = 0, limit = 20 } = req.query
     const { Comment } = req.app.get('models')
@@ -77,6 +78,7 @@ export async function remove(req, res) {
 }
 
 export async function vote(req, res) {
+    // TODO(davlis): Move to external service
     const { Comment, CommentVote } = req.app.get('models')
     const { id } = req.params
     const { user } = res.locals
