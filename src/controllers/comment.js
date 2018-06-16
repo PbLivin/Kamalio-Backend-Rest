@@ -19,7 +19,19 @@ export async function create(req, res) {
 }
 
 export async function list(req, res) {
-    res.send('NOT IMPLEMENTED')
+    const { postId } = req.query
+    const { offset = 0, limit = 20 } = req.query
+    const { Comment } = req.app.get('models')
+
+    const where = {}
+
+    if (postId) {
+        Object.assign(where, { postId })
+    }
+
+    const comments = await Comment.findAndCountAll({ where, offset, limit })
+
+    res.send(Object.assign(comments, { offset, limit }))
 }
 
 export async function one(req, res) {
