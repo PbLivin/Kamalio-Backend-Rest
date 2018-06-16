@@ -29,7 +29,7 @@ const SCHEMA = {
     },
     commentId: {
         type: DataTypes.UUID,
-        allowNull: false,
+        allowNull: true,
         references: {
             model: 'Comments',
             key: 'id',

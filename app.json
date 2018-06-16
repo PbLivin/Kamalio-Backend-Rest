@@ -3,6 +3,45 @@
   "scripts": {
   },
   "env": {
+    "ENV": {
+      "required": true
+    },
+    "PORT": {
+      "required": true
+    },
+    "SALT": {
+      "required": true
+    },
+    "DATABASE_URL": {
+      "required": true
+    },
+    "DATABASE_MAX_IDLE_TIME": {
+      "required": true
+    },
+    "DATABASE_MAX_POOL_SIZE": {
+      "required": true
+    },
+    "AUTH_ACCESS_TOKEN_LIFETIME": {
+      "required": true
+    },
+    "AUTH_REFRESH_TOKEN_LIFETIME": {
+      "required": true
+    },
+    "AUTH_RESET_EMAIL_TOKEN_LIFETIME": {
+      "required": true
+    },
+    "AUTH_ALLOW_BY_EMAIL": {
+      "required": true
+    },
+    "CLOUDINARY_CLOUD_NAME": {
+      "required": true
+    },
+    "CLOUDINARY_API_KEY": {
+      "required": true
+    },
+    "CLOUDINARY_API_SECRET": {
+      "required": true
+    }
   },
   "formation": {
     "web": {
