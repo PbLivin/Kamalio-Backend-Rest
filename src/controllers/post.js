@@ -58,7 +58,52 @@ export async function readOne(req, res) {
 }
 
 export async function create(req, res) {
-    res.send('NOT IMPLEMENTED')
+    const { title, content, photoUrl, latitude, longitude } = req.body
+    const { user } = res.locals
+    const { Post, PostLocation } = req.app.get('models')
+
+    const post = await Post.create({
+        title,
+        content,
+        userId: user.id,
+        photoUrl
+    })
+
+    const postLocation = await PostLocation.create({
+        postId: post.id,
+        latitude,
+        longitude
+    })
+
+    res.json({ post, postLocation })
+}
+
+export async function putPostPhoto(req, res) {
+    const { Post, UserUpload } = req.app.get('models')
+    const { user } = res.locals
+    const { id } = req.params
+
+    const post = await Post.findOne({ id })
+    assertOrThrow(post, Error, 'Post not found')
+
+    const file = res.locals.files[0]
+    let photoUrl = null
+
+    if (file) {
+        await UserUpload.create({
+            uploadUrl: file.url,
+            publicId: file.public_id,
+            userId: user.id
+        })
+        photoUrl = file.url
+    } else {
+        // delete ?
+    }
+
+    post.photoUrl = photoUrl
+    await post.save()
+
+    res.json({ ok: 'success' })
 }
 
 export async function update(req, res) {
