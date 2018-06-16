@@ -370,6 +370,62 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "vote",
+			"description": "",
+			"item": [
+				{
+					"name": "/posts/:id/votes",
+					"request": {
+						"url": "localhost:3000/posts/97913d7f-760a-465d-ab3e-fd395ab71f23/votes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNDkzNjMsImV4cCI6MTUyOTIzNTc2M30.J8BpaJlqkLpfNeXhGV_wqdE3M2ej4RBV0t3FrTe1H6k",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"value\": \"-1\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "/comments/:id/votes",
+					"request": {
+						"url": "localhost:3000/comments/855c2908-d50f-49ab-a28c-0536f18757c9/votes",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNDkzNjMsImV4cCI6MTUyOTIzNTc2M30.J8BpaJlqkLpfNeXhGV_wqdE3M2ej4RBV0t3FrTe1H6k",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"value\": \"-1\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
