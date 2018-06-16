@@ -83,7 +83,7 @@ export async function putPostPhoto(req, res) {
     const { user } = res.locals
     const { id } = req.params
 
-    const post = await Post.findOne({ id })
+    const post = await Post.findOne({ where: { id } })
     assertOrThrow(post, Error, 'Post not found')
 
     const file = res.locals.files[0]
@@ -103,7 +103,7 @@ export async function putPostPhoto(req, res) {
     post.photoUrl = photoUrl
     await post.save()
 
-    res.json({ ok: 'success' })
+    res.json(post)
 }
 
 export async function update(req, res) {
@@ -111,5 +111,19 @@ export async function update(req, res) {
 }
 
 export async function remove(req, res) {
-    res.send('NOT IMPLEMENTED')
+    const { Post } = req.app.get('models')
+    const { id } = req.params
+    const { user } = res.locals
+
+    const post = await Post.findOne({ where: { id } })
+
+    console.log(post.userId);
+    console.log(user.id)
+
+    assertOrThrow(post, Error, 'Post not found')
+    assertOrThrow(post.userId === user.id, Error, 'Insufficient rights')
+
+    await post.destroy()
+
+    res.json({ status: 'ok' })
 }
