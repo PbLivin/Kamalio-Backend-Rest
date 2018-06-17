@@ -23,7 +23,7 @@
 							"mode": "raw",
 							"raw": "{\n\t\"deviceId\": \"1\",\n\t\"platform\": \"android\"\n}"
 						},
-						"url": "localhost:3000/auth/verify"
+						"url": "{{host}}/auth/verify"
 					},
 					"response": []
 				}
@@ -48,26 +48,25 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:3000/posts?latitude=51&longitude=20.02&section=BEST",
+							"raw": "{{host}}/posts?latitude=50.07&longitude=19.88&section=LOUDEST",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"posts"
 							],
 							"query": [
 								{
 									"key": "latitude",
-									"value": "51"
+									"value": "50.07"
 								},
 								{
 									"key": "longitude",
-									"value": "20.02"
+									"value": "19.88"
 								},
 								{
 									"key": "section",
-									"value": "BEST"
+									"value": "LOUDEST"
 								}
 							]
 						}
@@ -90,9 +89,9 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"title\": \"A\",\n\t\"content\": \"Hello world\",\n\t\"latitude\": \"51\",\n\t\"longitude\": \"20\"\n}"
+							"raw": "{\n\t\"title\": \"A\",\n\t\"content\": \"Hello world\",\n\t\"latitude\": 50.07,\n\t\"longitude\": 19.88\n}"
 						},
-						"url": "localhost:3000/posts"
+						"url": "{{host}}/posts"
 					},
 					"response": []
 				},
@@ -121,7 +120,7 @@
 								}
 							]
 						},
-						"url": "localhost:3000/posts/97913d7f-760a-465d-ab3e-fd395ab71f23/photo"
+						"url": "{{host}}/posts/97913d7f-760a-465d-ab3e-fd395ab71f23/photo"
 					},
 					"response": []
 				},
@@ -139,7 +138,7 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": "localhost:3000/posts/7140816b-2ca5-4535-95c8-f7e9fa4d5c57"
+						"url": "{{host}}/posts/7140816b-2ca5-4535-95c8-f7e9fa4d5c57"
 					},
 					"response": []
 				},
@@ -161,7 +160,7 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": "localhost:3000/posts/2e68d49c-25ff-4e4e-a57b-38be9917d095"
+						"url": "{{host}}/posts/2e68d49c-25ff-4e4e-a57b-38be9917d095"
 					},
 					"response": []
 				}
@@ -189,7 +188,7 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": "localhost:3000/comments/813f1bfb-ff6b-4844-a966-f6ffb7058e88"
+						"url": "{{host}}/comments/813f1bfb-ff6b-4844-a966-f6ffb7058e88"
 					},
 					"response": []
 				},
@@ -211,7 +210,7 @@
 							"mode": "raw",
 							"raw": "{\n\t\"postId\": \"7140816b-2ca5-4535-95c8-f7e9fa4d5c57\",\n\t\"content\": \"Nice post lol\"\n}\n"
 						},
-						"url": "localhost:3000/comments"
+						"url": "{{host}}/comments"
 					},
 					"response": []
 				},
@@ -229,7 +228,7 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": "localhost:3000/comments/7140816b-2ca5-4535-95c8-f7e9fa4d5c57"
+						"url": "{{host}}/comments/7140816b-2ca5-4535-95c8-f7e9fa4d5c57"
 					},
 					"response": []
 				},
@@ -251,7 +250,7 @@
 							"mode": "raw",
 							"raw": "{\n\t\"content\": \"WOW\"\n}"
 						},
-						"url": "localhost:3000/comments/855c2908-d50f-49ab-a28c-0536f18757c9"
+						"url": "{{host}}/comments/855c2908-d50f-49ab-a28c-0536f18757c9"
 					},
 					"response": []
 				},
@@ -270,11 +269,10 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "localhost:3000/comments?postId=7140816b-2ca5-4535-95c8-f7e9fa4d5c57&offset=0&limit=20",
+							"raw": "{{host}}/comments?postId=7140816b-2ca5-4535-95c8-f7e9fa4d5c57&offset=0&limit=20",
 							"host": [
-								"localhost"
+								"{{host}}"
 							],
-							"port": "3000",
 							"path": [
 								"comments"
 							],
@@ -316,7 +314,7 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": "localhost:3000/users/karma"
+						"url": "{{host}}/users/karma"
 					},
 					"response": []
 				}
@@ -344,7 +342,7 @@
 							"mode": "raw",
 							"raw": "{\n\t\"value\": 1\n}"
 						},
-						"url": "localhost:3000/posts/7140816b-2ca5-4535-95c8-f7e9fa4d5c57/votes"
+						"url": "{{host}}/posts/f7c18292-b739-453f-be89-0dd03200d2df/votes"
 					},
 					"response": []
 				},
@@ -366,7 +364,7 @@
 							"mode": "raw",
 							"raw": "{\n\t\"value\": \"-1\"\n}"
 						},
-						"url": "localhost:3000/comments/855c2908-d50f-49ab-a28c-0536f18757c9/votes"
+						"url": "{{host}}/comments/855c2908-d50f-49ab-a28c-0536f18757c9/votes"
 					},
 					"response": []
 				}
