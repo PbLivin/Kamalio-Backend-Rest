@@ -43,10 +43,11 @@ export async function postQueryExecutor(
             order = sequelize.literal('rating DESC')
         } else if (section === 'LOUDEST') {
             order = sequelize.literal('"commentCount" DESC')
-        } else {
+        } else if (section === 'LATEST'){
             order = sequelize.literal('"updatedAt" DESC')
+        } else {
+            throw new Error('Section not allowed')
         }
-    }
 
     let postLocationWhere = {}
     if (latitude && longitude) {

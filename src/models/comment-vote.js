@@ -2,6 +2,7 @@ import { DataTypes } from 'sequelize'
 
 const VALUES = {
     UPVOTE: 1,
+    NOVOTE: 0,
     DOWNVOTE: -1
 }
 
