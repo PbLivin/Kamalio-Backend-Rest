@@ -42,7 +42,7 @@ export async function postQueryExecutor(
         if (section === 'BEST') {
             order = sequelize.literal('rating DESC')
         } else if (section === 'LOUDEST') {
-            order = sequelize.literal('commentCount DESC')
+            order = sequelize.literal('"commentCount" DESC')
         } else {
             order = sequelize.literal('"updatedAt" DESC')
         }
