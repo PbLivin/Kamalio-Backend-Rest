@@ -1,38 +1,29 @@
 {
-	"variables": [],
 	"info": {
+		"_postman_id": "668c2800-0682-4eb6-9fc8-f14bb56e100d",
 		"name": "Kamalio",
-		"_postman_id": "bc39071f-8c2e-e0fc-8f58-107adceefed5",
-		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "auth",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "/auth/verify",
 					"request": {
-						"url": "localhost:3000/auth/verify",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
-							},
-							{
-								"key": "",
-								"value": "",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"deviceId\": \"1\",\n\t\"platform\": \"android\"\n}"
 						},
-						"description": ""
+						"url": "localhost:3000/auth/verify"
 					},
 					"response": []
 				}
@@ -40,11 +31,22 @@
 		},
 		{
 			"name": "post",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "/posts?latitude=51&longitude=20.02&section=BEST",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "localhost:3000/posts?latitude=51&longitude=20.02&section=BEST",
 							"host": [
@@ -57,81 +59,55 @@
 							"query": [
 								{
 									"key": "latitude",
-									"value": "51",
-									"equals": true,
-									"description": ""
+									"value": "51"
 								},
 								{
 									"key": "longitude",
-									"value": "20.02",
-									"equals": true,
-									"description": ""
+									"value": "20.02"
 								},
 								{
 									"key": "section",
-									"value": "BEST",
-									"equals": true,
-									"description": ""
+									"value": "BEST"
 								}
-							],
-							"variable": []
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNDkzNjMsImV4cCI6MTUyOTIzNTc2M30.J8BpaJlqkLpfNeXhGV_wqdE3M2ej4RBV0t3FrTe1H6k",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "/posts",
 					"request": {
-						"url": "localhost:3000/posts",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNDkzNjMsImV4cCI6MTUyOTIzNTc2M30.J8BpaJlqkLpfNeXhGV_wqdE3M2ej4RBV0t3FrTe1H6k",
-								"description": ""
+								"value": "Bearer {{accessToken}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"title\": \"A\",\n\t\"content\": \"Hello world\",\n\t\"latitude\": \"51\",\n\t\"longitude\": \"20\"\n}"
 						},
-						"description": ""
+						"url": "localhost:3000/posts"
 					},
 					"response": []
 				},
 				{
 					"name": "/posts/:id/photo",
 					"request": {
-						"url": "localhost:3000/posts/97913d7f-760a-465d-ab3e-fd395ab71f23/photo",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNDkzNjMsImV4cCI6MTUyOTIzNTc2M30.J8BpaJlqkLpfNeXhGV_wqdE3M2ej4RBV0t3FrTe1H6k",
-								"description": ""
+								"value": "Bearer {{accessToken}}"
 							},
 							{
 								"key": "Content-Type",
 								"value": "application/x-www-form-urlencoded",
-								"description": "",
 								"disabled": true
 							}
 						],
@@ -141,57 +117,51 @@
 								{
 									"key": "bjh.jpg",
 									"value": "",
-									"description": "",
 									"type": "file"
 								}
 							]
 						},
-						"description": ""
+						"url": "localhost:3000/posts/97913d7f-760a-465d-ab3e-fd395ab71f23/photo"
 					},
 					"response": []
 				},
 				{
 					"name": "/posts/:id",
 					"request": {
-						"url": "localhost:3000/posts/97913d7f-760a-465d-ab3e-fd395ab71f23",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNDkzNjMsImV4cCI6MTUyOTIzNTc2M30.J8BpaJlqkLpfNeXhGV_wqdE3M2ej4RBV0t3FrTe1H6k",
-								"description": ""
+								"value": "Bearer {{accessToken}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": "localhost:3000/posts/7140816b-2ca5-4535-95c8-f7e9fa4d5c57"
 					},
 					"response": []
 				},
 				{
 					"name": "/posts/:id",
 					"request": {
-						"url": "localhost:3000/posts/2e68d49c-25ff-4e4e-a57b-38be9917d095",
 						"method": "DELETE",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}"
 							},
 							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNDkzNjMsImV4cCI6MTUyOTIzNTc2M30.J8BpaJlqkLpfNeXhGV_wqdE3M2ej4RBV0t3FrTe1H6k",
-								"description": ""
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": "localhost:3000/posts/2e68d49c-25ff-4e4e-a57b-38be9917d095"
 					},
 					"response": []
 				}
@@ -199,108 +169,108 @@
 		},
 		{
 			"name": "comment",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "/comments/:id",
 					"request": {
-						"url": "localhost:3000/comments/813f1bfb-ff6b-4844-a966-f6ffb7058e88",
 						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNTcxMjgsImV4cCI6MTUyOTI0MzUyOH0.kozUqDNTjd_5blNlkslDycRuuAIQ8gmpmELciUxtV5E",
-								"description": ""
+								"value": "Bearer {{accessToken}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": "localhost:3000/comments/813f1bfb-ff6b-4844-a966-f6ffb7058e88"
 					},
 					"response": []
 				},
 				{
 					"name": "/comments",
 					"request": {
-						"url": "localhost:3000/comments",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNTcxMjgsImV4cCI6MTUyOTI0MzUyOH0.kozUqDNTjd_5blNlkslDycRuuAIQ8gmpmELciUxtV5E",
-								"description": ""
+								"value": "Bearer {{accessToken}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"postId\": \"97913d7f-760a-465d-ab3e-fd395ab71f23\",\n\t\"content\": \"Nice post lol\"\n}\n"
+							"raw": "{\n\t\"postId\": \"7140816b-2ca5-4535-95c8-f7e9fa4d5c57\",\n\t\"content\": \"Nice post lol\"\n}\n"
 						},
-						"description": ""
+						"url": "localhost:3000/comments"
 					},
 					"response": []
 				},
 				{
 					"name": "/comments/:id",
 					"request": {
-						"url": "localhost:3000/comments/855c2908-d50f-49ab-a28c-0536f18757c9",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNTcxMjgsImV4cCI6MTUyOTI0MzUyOH0.kozUqDNTjd_5blNlkslDycRuuAIQ8gmpmELciUxtV5E",
-								"description": ""
+								"value": "Bearer {{accessToken}}"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"description": ""
+						"url": "localhost:3000/comments/7140816b-2ca5-4535-95c8-f7e9fa4d5c57"
 					},
 					"response": []
 				},
 				{
 					"name": "/comments/:id",
 					"request": {
-						"url": "localhost:3000/comments/855c2908-d50f-49ab-a28c-0536f18757c9",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNTcxMjgsImV4cCI6MTUyOTI0MzUyOH0.kozUqDNTjd_5blNlkslDycRuuAIQ8gmpmELciUxtV5E",
-								"description": ""
+								"value": "Bearer {{accessToken}}"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"content\": \"WOW\"\n}"
 						},
-						"description": ""
+						"url": "localhost:3000/comments/855c2908-d50f-49ab-a28c-0536f18757c9"
 					},
 					"response": []
 				},
 				{
 					"name": "/comments?postId=:id&offset=0&limit=20",
 					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
-							"raw": "localhost:3000/comments?postId=97913d7f-760a-465d-ab3e-fd395ab71f23&offset=0&limit=20",
+							"raw": "localhost:3000/comments?postId=7140816b-2ca5-4535-95c8-f7e9fa4d5c57&offset=0&limit=20",
 							"host": [
 								"localhost"
 							],
@@ -311,38 +281,18 @@
 							"query": [
 								{
 									"key": "postId",
-									"value": "97913d7f-760a-465d-ab3e-fd395ab71f23",
-									"equals": true,
-									"description": ""
+									"value": "7140816b-2ca5-4535-95c8-f7e9fa4d5c57"
 								},
 								{
 									"key": "offset",
-									"value": "0",
-									"equals": true,
-									"description": ""
+									"value": "0"
 								},
 								{
 									"key": "limit",
-									"value": "20",
-									"equals": true,
-									"description": ""
+									"value": "20"
 								}
-							],
-							"variable": []
-						},
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNTcxMjgsImV4cCI6MTUyOTI0MzUyOH0.kozUqDNTjd_5blNlkslDycRuuAIQ8gmpmELciUxtV5E",
-								"description": ""
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"description": ""
+							]
+						}
 					},
 					"response": []
 				}
@@ -350,22 +300,23 @@
 		},
 		{
 			"name": "user",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "/users/karma",
 					"request": {
-						"url": "localhost:3000/users/karma",
 						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNjIzNTUsImV4cCI6MTUyOTI0ODc1NX0.xwA8_p4kuTX2qTUxReqAqIBnfxgLOcOQ4sYTbh-UBMk",
-								"description": ""
+								"value": "Bearer {{accessToken}}"
 							}
 						],
-						"body": {},
-						"description": ""
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "localhost:3000/users/karma"
 					},
 					"response": []
 				}
@@ -373,55 +324,49 @@
 		},
 		{
 			"name": "vote",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "/posts/:id/votes",
 					"request": {
-						"url": "localhost:3000/posts/97913d7f-760a-465d-ab3e-fd395ab71f23/votes",
 						"method": "POST",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}"
 							},
 							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNDkzNjMsImV4cCI6MTUyOTIzNTc2M30.J8BpaJlqkLpfNeXhGV_wqdE3M2ej4RBV0t3FrTe1H6k",
-								"description": ""
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"value\": \"-1\"\n}"
+							"raw": "{\n\t\"value\": 1\n}"
 						},
-						"description": ""
+						"url": "localhost:3000/posts/7140816b-2ca5-4535-95c8-f7e9fa4d5c57/votes"
 					},
 					"response": []
 				},
 				{
 					"name": "/comments/:id/votes",
 					"request": {
-						"url": "localhost:3000/comments/855c2908-d50f-49ab-a28c-0536f18757c9/votes",
 						"method": "POST",
 						"header": [
 							{
-								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}"
 							},
 							{
-								"key": "Authorization",
-								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImVhN2FlZDRkLWE1OTAtNGRhYS1hMGM0LTc1MTYyZjlmMzRhOCIsInR5cGUiOiJhY2Nlc3MtdG9rZW4iLCJpYXQiOjE1MjkxNDkzNjMsImV4cCI6MTUyOTIzNTc2M30.J8BpaJlqkLpfNeXhGV_wqdE3M2ej4RBV0t3FrTe1H6k",
-								"description": ""
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"value\": \"-1\"\n}"
 						},
-						"description": ""
+						"url": "localhost:3000/comments/855c2908-d50f-49ab-a28c-0536f18757c9/votes"
 					},
 					"response": []
 				}

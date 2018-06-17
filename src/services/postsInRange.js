@@ -94,15 +94,12 @@ export async function postQueryExecutor(
             model: PostLocation,
             duplicating: false,
             where: postLocationWhere
-        }, {
-            model: User,
-            duplicating: false,
         }],
         distinct: true,
         offset,
         limit,
         order,
-        group: ['Post.id', 'PostLocation.id', 'User.id'],
+        group: ['Post.id', 'PostLocation.id'],
     })
 
     return posts
