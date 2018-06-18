@@ -96,6 +96,46 @@
 					"response": []
 				},
 				{
+					"name": "/posts/:id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{host}}/posts/7140816b-2ca5-4535-95c8-f7e9fa4d5c57"
+					},
+					"response": []
+				},
+				{
+					"name": "/posts/:id",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{accessToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\": \"B\",\n\t\"content\": \"Hello worlds!\"\n}"
+						},
+						"url": "{{host}}/posts/a7fa14c6-5eec-498a-a15e-beea05bffafa"
+					},
+					"response": []
+				},
+				{
 					"name": "/posts/:id/photo",
 					"request": {
 						"method": "PUT",
@@ -121,24 +161,6 @@
 							]
 						},
 						"url": "{{host}}/posts/97913d7f-760a-465d-ab3e-fd395ab71f23/photo"
-					},
-					"response": []
-				},
-				{
-					"name": "/posts/:id",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "Bearer {{accessToken}}"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": "{{host}}/posts/7140816b-2ca5-4535-95c8-f7e9fa4d5c57"
 					},
 					"response": []
 				},
@@ -171,24 +193,42 @@
 			"description": null,
 			"item": [
 				{
-					"name": "/comments/:id",
+					"name": "/comments?postId=:id&offset=0&limit=20",
 					"request": {
-						"method": "DELETE",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
 								"value": "Bearer {{accessToken}}"
-							},
-							{
-								"key": "Content-Type",
-								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": "{{host}}/comments/813f1bfb-ff6b-4844-a966-f6ffb7058e88"
+						"url": {
+							"raw": "{{host}}/comments?postId=7140816b-2ca5-4535-95c8-f7e9fa4d5c57&offset=0&limit=20",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"comments"
+							],
+							"query": [
+								{
+									"key": "postId",
+									"value": "7140816b-2ca5-4535-95c8-f7e9fa4d5c57"
+								},
+								{
+									"key": "offset",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "20"
+								}
+							]
+						}
 					},
 					"response": []
 				},
@@ -255,42 +295,24 @@
 					"response": []
 				},
 				{
-					"name": "/comments?postId=:id&offset=0&limit=20",
+					"name": "/comments/:id",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": [
 							{
 								"key": "Authorization",
 								"value": "Bearer {{accessToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": {
-							"raw": "{{host}}/comments?postId=7140816b-2ca5-4535-95c8-f7e9fa4d5c57&offset=0&limit=20",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"comments"
-							],
-							"query": [
-								{
-									"key": "postId",
-									"value": "7140816b-2ca5-4535-95c8-f7e9fa4d5c57"
-								},
-								{
-									"key": "offset",
-									"value": "0"
-								},
-								{
-									"key": "limit",
-									"value": "20"
-								}
-							]
-						}
+						"url": "{{host}}/comments/813f1bfb-ff6b-4844-a966-f6ffb7058e88"
 					},
 					"response": []
 				}
