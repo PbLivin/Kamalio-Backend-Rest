@@ -12,6 +12,8 @@ export default function authenticate(req, res, next) {
 
         let user
 
+        console.log(authorization);
+
         assertOrThrow(authorization, Error, 'Authorization header is missing')
 
         if (authorization.includes('Bearer ')) {
