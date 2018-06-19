@@ -18,6 +18,10 @@ export const SCHEMA = {
         type: DataTypes.STRING(511),
         allowNull: true,
     },
+    thumbPhotoUrl: {
+        type: DataTypes.STRING(511),
+        allowNull: true,
+    },
     userId: {
         type: DataTypes.UUID,
         allowNull: false,
