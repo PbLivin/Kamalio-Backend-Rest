@@ -11,9 +11,9 @@ export default function defineUploadMiddleware(req, res, next) {
         const filePaths = []
 
         form.parse(req, async (err, fields, rawFiles) => {
+            console.log(err, fields)
             if (err) {
-                console.log(err, fields);
-                return next(err);
+                return next(err)
             }
 
             Object.values(rawFiles).forEach((file) => {
