@@ -12,6 +12,7 @@ export default function defineUploadMiddleware(req, res, next) {
 
         form.parse(req, async (err, fields, rawFiles) => {
             if (err) {
+                console.log(err, fields);
                 return next(err);
             }
 
