@@ -110,6 +110,8 @@ export async function remove(req, res) {
 
 export async function putPostPhoto(req, res) {
     const { Post, UserUpload } = req.app.get('models')
+    console.log('locals: ', req.locals)
+    console.log('body: ', req.body)
     const { user } = res.locals
     const { id } = req.params
 
