@@ -1,8 +1,8 @@
 {
 	"info": {
-		"_postman_id": "668c2800-0682-4eb6-9fc8-f14bb56e100d",
+		"_postman_id": "97a76a32-6cfe-4e4f-9d29-8c43e5f27865",
 		"name": "Kamalio",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
@@ -23,7 +23,16 @@
 							"mode": "raw",
 							"raw": "{\n\t\"deviceId\": \"1\",\n\t\"platform\": \"android\"\n}"
 						},
-						"url": "{{host}}/auth/verify"
+						"url": {
+							"raw": "{{host}}/auth/verify",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"auth",
+								"verify"
+							]
+						}
 					},
 					"response": []
 				}
@@ -48,7 +57,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{host}}/posts?latitude=50.07&longitude=19.88&section=LOUDEST",
+							"raw": "{{host}}/posts?latitude=50.07&longitude=19.88&section=LATEST&limit=2&offset=2",
 							"host": [
 								"{{host}}"
 							],
@@ -66,7 +75,15 @@
 								},
 								{
 									"key": "section",
-									"value": "LOUDEST"
+									"value": "LATEST"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								},
+								{
+									"key": "offset",
+									"value": "2"
 								}
 							]
 						}
@@ -89,9 +106,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"title\": \"A\",\n\t\"content\": \"Hello world\",\n\t\"latitude\": 50.07,\n\t\"longitude\": 19.88\n}"
+							"raw": "{\n\t\"title\": \"8\",\n\t\"content\": \"8\",\n\t\"latitude\": 50.07,\n\t\"longitude\": 19.88\n}"
 						},
-						"url": "{{host}}/posts"
+						"url": {
+							"raw": "{{host}}/posts",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts"
+							]
+						}
 					},
 					"response": []
 				},
@@ -109,7 +134,16 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": "{{host}}/posts/7140816b-2ca5-4535-95c8-f7e9fa4d5c57"
+						"url": {
+							"raw": "{{host}}/posts/839764f6-7f27-4de0-b113-61ce59bcb733",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								"839764f6-7f27-4de0-b113-61ce59bcb733"
+							]
+						}
 					},
 					"response": []
 				},
@@ -131,7 +165,16 @@
 							"mode": "raw",
 							"raw": "{\n\t\"title\": \"B\",\n\t\"content\": \"Hello worlds!\"\n}"
 						},
-						"url": "{{host}}/posts/a7fa14c6-5eec-498a-a15e-beea05bffafa"
+						"url": {
+							"raw": "{{host}}/posts/839764f6-7f27-4de0-b113-61ce59bcb733",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								"839764f6-7f27-4de0-b113-61ce59bcb733"
+							]
+						}
 					},
 					"response": []
 				},
@@ -155,12 +198,21 @@
 							"formdata": [
 								{
 									"key": "bjh.jpg",
-									"value": "",
 									"type": "file"
 								}
 							]
 						},
-						"url": "{{host}}/posts/97913d7f-760a-465d-ab3e-fd395ab71f23/photo"
+						"url": {
+							"raw": "{{host}}/posts/839764f6-7f27-4de0-b113-61ce59bcb733/photo",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								"839764f6-7f27-4de0-b113-61ce59bcb733",
+								"photo"
+							]
+						}
 					},
 					"response": []
 				},
@@ -182,7 +234,16 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": "{{host}}/posts/2e68d49c-25ff-4e4e-a57b-38be9917d095"
+						"url": {
+							"raw": "{{host}}/posts/2e68d49c-25ff-4e4e-a57b-38be9917d095",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								"2e68d49c-25ff-4e4e-a57b-38be9917d095"
+							]
+						}
 					},
 					"response": []
 				}
@@ -250,7 +311,15 @@
 							"mode": "raw",
 							"raw": "{\n\t\"postId\": \"7140816b-2ca5-4535-95c8-f7e9fa4d5c57\",\n\t\"content\": \"Nice post lol\"\n}\n"
 						},
-						"url": "{{host}}/comments"
+						"url": {
+							"raw": "{{host}}/comments",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"comments"
+							]
+						}
 					},
 					"response": []
 				},
@@ -268,7 +337,16 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": "{{host}}/comments/7140816b-2ca5-4535-95c8-f7e9fa4d5c57"
+						"url": {
+							"raw": "{{host}}/comments/7140816b-2ca5-4535-95c8-f7e9fa4d5c57",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"comments",
+								"7140816b-2ca5-4535-95c8-f7e9fa4d5c57"
+							]
+						}
 					},
 					"response": []
 				},
@@ -290,7 +368,16 @@
 							"mode": "raw",
 							"raw": "{\n\t\"content\": \"WOW\"\n}"
 						},
-						"url": "{{host}}/comments/855c2908-d50f-49ab-a28c-0536f18757c9"
+						"url": {
+							"raw": "{{host}}/comments/855c2908-d50f-49ab-a28c-0536f18757c9",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"comments",
+								"855c2908-d50f-49ab-a28c-0536f18757c9"
+							]
+						}
 					},
 					"response": []
 				},
@@ -312,7 +399,16 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": "{{host}}/comments/813f1bfb-ff6b-4844-a966-f6ffb7058e88"
+						"url": {
+							"raw": "{{host}}/comments/813f1bfb-ff6b-4844-a966-f6ffb7058e88",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"comments",
+								"813f1bfb-ff6b-4844-a966-f6ffb7058e88"
+							]
+						}
 					},
 					"response": []
 				}
@@ -336,7 +432,16 @@
 							"mode": "raw",
 							"raw": ""
 						},
-						"url": "{{host}}/users/karma"
+						"url": {
+							"raw": "{{host}}/users/karma",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"users",
+								"karma"
+							]
+						}
 					},
 					"response": []
 				}
@@ -364,7 +469,17 @@
 							"mode": "raw",
 							"raw": "{\n\t\"value\": 1\n}"
 						},
-						"url": "{{host}}/posts/f7c18292-b739-453f-be89-0dd03200d2df/votes"
+						"url": {
+							"raw": "{{host}}/posts/f7c18292-b739-453f-be89-0dd03200d2df/votes",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"posts",
+								"f7c18292-b739-453f-be89-0dd03200d2df",
+								"votes"
+							]
+						}
 					},
 					"response": []
 				},
@@ -386,7 +501,17 @@
 							"mode": "raw",
 							"raw": "{\n\t\"value\": \"-1\"\n}"
 						},
-						"url": "{{host}}/comments/855c2908-d50f-49ab-a28c-0536f18757c9/votes"
+						"url": {
+							"raw": "{{host}}/comments/855c2908-d50f-49ab-a28c-0536f18757c9/votes",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"comments",
+								"855c2908-d50f-49ab-a28c-0536f18757c9",
+								"votes"
+							]
+						}
 					},
 					"response": []
 				}
