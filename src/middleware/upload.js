@@ -22,9 +22,17 @@ export default function defineUploadMiddleware(req, res, next) {
             const files = []
             await Promise.all(filePaths.map(async (filePath) => {
                 const file = await cloudinary.uploader.upload(filePath)
+
+                if (file) {
+                    file.thumb = cloudinary.url(file.public_id, {
+                        secure: true,
+                        width: 150,
+                        height: 150,
+                        crop: 'fit'
+                    })
+                }
                 files.push(file)
             }))
-
             res.locals.files = files
             next()
         })
