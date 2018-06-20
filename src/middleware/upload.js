@@ -28,7 +28,7 @@ export default function defineUploadMiddleware(req, res, next) {
                         secure: true,
                         width: 150,
                         height: 150,
-                        crop: 'fit'
+                        crop: 'thumb'
                     })
                 }
                 files.push(file)
