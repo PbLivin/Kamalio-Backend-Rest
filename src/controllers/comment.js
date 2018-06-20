@@ -23,6 +23,7 @@ export async function list(req, res) {
     const { postId } = req.query
     const { offset = 0, limit = 20 } = req.query
     const { Comment } = req.app.get('models')
+    const order = sequelize.literal('"createdAt" ASC')
 
     const where = {}
 
@@ -30,7 +31,7 @@ export async function list(req, res) {
         Object.assign(where, { postId })
     }
 
-    const comments = await Comment.findAndCountAll({ where, offset, limit })
+    const comments = await Comment.findAndCountAll({ where, offset, limit, order })
 
     res.send(Object.assign(comments, { offset, limit }))
 }
