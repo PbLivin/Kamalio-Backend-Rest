@@ -78,6 +78,7 @@ export async function postQueryExecutor(
             'title',
             'content',
             'photoUrl',
+            'thumbPhotoUrl',
             'createdAt',
             'updatedAt',
             'userId',
