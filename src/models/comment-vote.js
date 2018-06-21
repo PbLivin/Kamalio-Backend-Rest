@@ -13,9 +13,16 @@ const SCHEMA = {
         defaultValue: DataTypes.UUIDV4,
     },
     value: {
-        type: DataTypes.ENUM(Object.values(VALUES)),
+        type: DataTypes.INTEGER,
         required: true,
         allowNull: false,
+        validate: {
+            isPossibleValue(value) {
+                if (!Object.values(VALUES).includes(value)) {
+                    throw new Error('Not allowed value!')
+                }
+            }
+        }
     },
     userId: {
         type: DataTypes.UUID,

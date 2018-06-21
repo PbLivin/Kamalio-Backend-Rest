@@ -40,7 +40,7 @@ export async function list(req, res) {
 
     const myVotes = await CommentVote.findAll({
         where: {
-            postId,
+            commentId: rawComments.map(p => p.id),
             userId: user.id
         }
     })
