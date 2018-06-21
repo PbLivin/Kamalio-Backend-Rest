@@ -51,7 +51,7 @@ export async function list(req, res) {
     })
 
 
-    res.send(Object.assign(rawComments, { offset, limit }))
+    res.send(Object.assign({ rows: rawComments }, { offset: Number(offset), limit: Number(limit) }))
 }
 
 export async function one(req, res) {
