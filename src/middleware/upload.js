@@ -11,8 +11,9 @@ export default function defineUploadMiddleware(req, res, next) {
         const filePaths = []
 
         form.parse(req, async (err, fields, rawFiles) => {
+            console.log(err, fields)
             if (err) {
-                return next(err);
+                return next(err)
             }
 
             Object.values(rawFiles).forEach((file) => {
@@ -22,9 +23,17 @@ export default function defineUploadMiddleware(req, res, next) {
             const files = []
             await Promise.all(filePaths.map(async (filePath) => {
                 const file = await cloudinary.uploader.upload(filePath)
+
+                if (file) {
+                    file.thumb = cloudinary.url(file.public_id, {
+                        secure: true,
+                        width: 150,
+                        height: 150,
+                        crop: 'thumb'
+                    })
+                }
                 files.push(file)
             }))
-
             res.locals.files = files
             next()
         })

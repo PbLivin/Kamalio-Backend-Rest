@@ -15,21 +15,24 @@ export function getPost(id) {
 }
 
 export function getPostsBySectionInRange(
-    section, { latitude, longitude }, { offset = 0, limit = 20 }
+    section, { latitude, longitude }, { offset = 0, limit = 20, queryTime = new Date() }
 ) {
-    return postQueryExecutor({ latitude, longitude }, { section }, { offset, limit }) 
+    return postQueryExecutor({ latitude, longitude }, { section }, { offset, limit, queryTime }) 
 }
 
 export async function postQueryExecutor(
-    { latitude, longitude }, { id, section }, { offset, limit } = {}
+    { latitude, longitude }, { id, section }, { offset, limit, queryTime } = {}
 ) {
     const { sequelize } = getDatabase()
     const { PostLocation, Post, PostVote, Comment, User } = getDatabase().models
-
     let method
     let order
 
     const where = {}
+
+    where.createdAt = {
+        [Sequelize.Op.lt]: queryTime
+    }
 
     if (id) {
         method = 'findOne'
@@ -42,9 +45,11 @@ export async function postQueryExecutor(
         if (section === 'BEST') {
             order = sequelize.literal('rating DESC')
         } else if (section === 'LOUDEST') {
-            order = sequelize.literal('commentCount DESC')
-        } else {
+            order = sequelize.literal('"commentCount" DESC')
+        } else if (section === 'LATEST') {
             order = sequelize.literal('"updatedAt" DESC')
+        } else {
+            throw new Error('Section not allowed')
         }
     }
 
@@ -76,6 +81,7 @@ export async function postQueryExecutor(
             'title',
             'content',
             'photoUrl',
+            'thumbPhotoUrl',
             'createdAt',
             'updatedAt',
             'userId',
@@ -94,15 +100,12 @@ export async function postQueryExecutor(
             model: PostLocation,
             duplicating: false,
             where: postLocationWhere
-        }, {
-            model: User,
-            duplicating: false,
         }],
         distinct: true,
         offset,
         limit,
         order,
-        group: ['Post.id', 'PostLocation.id', 'User.id'],
+        group: ['Post.id', 'PostLocation.id'],
     })
 
     return posts
