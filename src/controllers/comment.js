@@ -22,9 +22,10 @@ export async function create(req, res) {
 export async function list(req, res) {
     // TODO(davlis): Add comments vote count
     const { sequelize } = getDatabase()
+    const { user } = res.locals
     const { postId } = req.query
     const { offset = 0, limit = 20 } = req.query
-    const { Comment } = req.app.get('models')
+    const { Comment, CommentVote } = req.app.get('models')
     const order = sequelize.literal('"createdAt" ASC')
 
     const where = {}
@@ -35,7 +36,22 @@ export async function list(req, res) {
 
     const comments = await Comment.findAndCountAll({ where, offset, limit, order })
 
-    res.send(Object.assign(comments, { offset, limit }))
+    const rawComments = comments.rows.map(p => p.toJSON())
+
+    const myVotes = await CommentVote.findAll({
+        where: {
+            postId,
+            userId: user.id
+        }
+    })
+
+    rawComments.map((rawComment) => {
+        const myVote = myVotes.filter(vote => vote.commentId === rawComment.id)[0]
+        rawComment.myVote = (myVote && myVote.value) ? myVote.value : 0
+    })
+
+
+    res.send(Object.assign(rawComments, { offset, limit }))
 }
 
 export async function one(req, res) {
