@@ -30,6 +30,7 @@
     "dotenv": "^4.0.0",
     "express": "^4.16.2",
     "geolib": "^2.0.24",
+    "joi": "^13.4.0",
     "jsonwebtoken": "^8.1.0",
     "morgan": "^1.9.0",
     "multiparty": "^4.1.4",
