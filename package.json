@@ -23,6 +23,7 @@
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
     "body-parser": "^1.18.3",
+    "boom": "^5.2.0",
     "cloudinary": "^1.11.0",
     "cors": "^2.8.4",
     "crypto": "^1.0.1",
