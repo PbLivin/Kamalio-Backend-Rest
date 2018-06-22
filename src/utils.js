@@ -9,3 +9,5 @@ export function assertOrThrow(statement, errorType, ...errorArgs) {
         throw new errorType(...errorArgs)
     }
 }
+
+export const JWT_REGEX = /^[a-zA-Z0-9\-_]+?\.[a-zA-Z0-9\-_]+?\.([a-zA-Z0-9\-_]+)?$/
