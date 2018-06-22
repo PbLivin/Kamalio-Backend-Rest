@@ -55,5 +55,5 @@ export async function getKarma(req, res) {
         karmaValue += postVotes[i].value * 2
     }
 
-    res.send({ value: karmaValue })
+    res.json({ value: karmaValue })
 }

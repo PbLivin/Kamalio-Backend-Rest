@@ -16,7 +16,7 @@ export async function create(req, res) {
         userId: user.id
     })
 
-    res.send(comment)
+    res.json(comment)
 }
 
 export async function list(req, res) {
@@ -24,7 +24,7 @@ export async function list(req, res) {
     const { sequelize } = getDatabase()
     const { user } = res.locals
     const { postId } = req.query
-    const { offset = 0, limit = 20 } = req.query
+    const { offset, limit } = req.query
     const { Comment, CommentVote } = req.app.get('models')
     const order = sequelize.literal('"createdAt" ASC')
 
@@ -51,7 +51,7 @@ export async function list(req, res) {
     })
 
 
-    res.send(Object.assign({ rows: rawComments }, { offset: Number(offset), limit: Number(limit) }))
+    res.json(Object.assign({ rows: rawComments }, { offset: Number(offset), limit: Number(limit) }))
 }
 
 export async function one(req, res) {
@@ -61,7 +61,7 @@ export async function one(req, res) {
     const comment = await Comment.findOne({ where: { id } })
     assertOrThrow(comment, Error, 'Comment not found')
 
-    res.send(comment)
+    res.json(comment)
 }
 
 export async function update(req, res) {
@@ -78,7 +78,7 @@ export async function update(req, res) {
     await comment.update({
         content
     })
-    res.send(comment)
+    res.json(comment)
 }
 
 export async function remove(req, res) {
