@@ -2,12 +2,7 @@ import { assertOrThrow } from '../utils'
 import { getPostsBySectionInRange, getPost, addDistanceInformationToPosts } from '../services/postsInRange'
 
 export async function list(req, res) {
-    const { 
-        offset = 0,
-        limit = 20,
-        myVoteInclude = true,
-        queryTime = new Date()
-    } = req.query
+    const { offset, limit, myVoteInclude, queryTime } = req.query
 
     const { latitude, longitude, section } = req.query
     const { user } = res.locals

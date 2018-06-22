@@ -24,20 +24,20 @@ export async function postQueryExecutor(
     { latitude, longitude }, { id, section }, { offset, limit, queryTime } = {}
 ) {
     const { sequelize } = getDatabase()
-    const { PostLocation, Post, PostVote, Comment, User } = getDatabase().models
+    const { PostLocation, Post, PostVote, Comment } = getDatabase().models
     let method
     let order
 
     const where = {}
 
-    where.createdAt = {
-        [Sequelize.Op.lt]: queryTime
-    }
-
     if (id) {
         method = 'findOne'
         order = null
         Object.assign(where, { id })
+    }
+
+    if (queryTime) {
+        Object.assign(where, { [Sequelize.Op.lt]: queryTime })
     }
 
     if (section) {
