@@ -12,16 +12,16 @@ import defineCommentVote from './models/comment-vote'
 import definePostVote from './models/post-vote'
 
 export default function initSequelizeFromConfig() {
-    const config = generateConfig();
+    const config = generateConfig()
 
-    let sequelize = new Sequelize(config.postgres.uri, {
+    const sequelize = new Sequelize(config.postgres.uri, {
         dialect: 'postgres',
         protocol: 'postgres',
         ssl: true,
         dialectOptions: {
             ssl: true
         }
-    });
+    })
 
     const models = {
         User: defineUser(sequelize),
@@ -34,13 +34,13 @@ export default function initSequelizeFromConfig() {
         Comment: defineComment(sequelize),
         CommentVote: defineCommentVote(sequelize),
         PostVote: definePostVote(sequelize),
-    };
+    }
 
     Object.keys(models).forEach((name) => {
         if ('associate' in models[name]) {
             models[name].associate(models)
         }
-    });
+    })
 
-    return { sequelize, models };
+    return { sequelize, models }
 }

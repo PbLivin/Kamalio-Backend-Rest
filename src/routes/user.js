@@ -2,7 +2,7 @@ import { Router } from 'express'
 import { errorWrap } from '../utils'
 import * as userController from '../controllers/user'
 
-const router = Router();
+const router = Router()
 
 router.get('/notification', errorWrap(userController.getNotificationSettings))
 router.put('/notification', errorWrap(userController.updateNotificationSettings))

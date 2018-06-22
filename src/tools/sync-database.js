@@ -8,4 +8,4 @@ async function sync() {
     sequelize.close()
 }
 
-sync().catch(err => console.log(err));
+sync().catch(err => console.log(err))

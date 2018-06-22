@@ -78,7 +78,13 @@ export async function create(req, res) {
         longitude
     })
 
-    res.json({ post, postLocation })
+    // TODO(davlis) Move this to serializer
+    const rawPost = post.toJSON()
+    rawPost.rating = 0
+    rawPost.myVote = 0
+    rawPost.commentCount = 0
+
+    res.json({ post: rawPost, postLocation })
 }
 
 export async function update(req, res) {

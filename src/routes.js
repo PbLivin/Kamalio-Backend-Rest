@@ -6,7 +6,7 @@ import userRoutes from './routes/user'
 import postRoutes from './routes/post'
 import commentRoutes from './routes/comment'
 
-const router = Router();
+const router = Router()
 
 router.use('/auth', authRoutes)
 router.use('/users', Authenticate, userRoutes)
