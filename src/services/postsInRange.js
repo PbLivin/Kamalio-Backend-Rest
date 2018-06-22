@@ -37,7 +37,7 @@ export async function postQueryExecutor(
     }
 
     if (queryTime) {
-        Object.assign(where, { [Sequelize.Op.lt]: queryTime })
+        Object.assign(where, { createdAt: { [Sequelize.Op.lt]: queryTime } })
     }
 
     if (section) {
